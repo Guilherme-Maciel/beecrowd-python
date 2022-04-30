@@ -1,11 +1,28 @@
-# Leia um conjunto não determinado de pares de valores M e N (parar quando algum dos valores for menor 
-# ou igual a zero). Para cada par lido, mostre a sequência do menor até o maior e a soma dos inteiros 
-# consecutivos entre eles (incluindo o N e M).
+soma = 0
+arr = []
+strRes = ""
 
-# Entrada
-# O arquivo de entrada contém um número não determinado de valores M e N. A última linha de entrada 
-# vai conter um número nulo ou negativo.
+M, N = input().split()
+M, N = int(M), int(N)
+if N > M:
+    ctrl = N
+    N = M
+    M = ctrl
 
-# Saída
-# Para cada dupla de valores, imprima a sequência do menor até o maior e a soma deles, 
-# conforme exemplo abaixo.
+while N > 0 and M > 0:
+    while (N <= M):
+        arr.append(N)
+        soma += N
+        N += 1
+    strRes = " ".join(map(str, arr)) + " Sum={}".format(soma)
+    print(strRes)
+    arr.clear()
+    soma = 0
+
+    M, N = input().split()
+    M, N = int(M), int(N)
+
+    if N > M:
+        ctrl = N
+        N = M
+        M = ctrl
